@@ -39,6 +39,7 @@ def read_amb_code(fn):
                 continue
             # Exclude <private-use-E000>..<private-use-F8FF>
             if 'E000' == start:
+                ret.append(((int(start, 16), int(end, 16)), comment))
                 continue
             # Exclude VARIATION SELECTOR-1..VARIATION SELECTOR-16
             if 'FE00' == start:
