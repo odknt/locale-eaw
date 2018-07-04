@@ -34,8 +34,14 @@ def read_amb_code(fn):
             # range code
             (start, end) = tuple(code.split('..'))
             n = int(start, 16)
+            # Exclude Latin-1 Supplement
+            if int('0090', 16) <= int(start, 16) <= int('00FF', 16):
+                continue
             # Exclude COMBINING CHARACTER
             if '0300' == start:
+                continue
+            # Exclude BOX DRAWINGS LIGHT HORIZONTAL..BOX DRAWINGS HEAVY VERTICAL AND HORIZONTAL
+            if '2500' == start:
                 continue
             # Exclude <private-use-E000>..<private-use-F8FF>
             if 'E000' == start:
@@ -67,6 +73,9 @@ def read_amb_code(fn):
         else:
             # single code
             n = int(code, 16)
+            # Exclude Latin-1 Supplement
+            if int('0090', 16) <= n <= int('00FF', 16):
+                continue
             # Exclude COMBINING CHARACTER
             if int('0300', 16) <= n <= int('036F', 16):
                 continue
