@@ -40,6 +40,13 @@ def read_amb_code(fn):
             # Exclude COMBINING CHARACTER
             if '0300' == start:
                 continue
+            # Exclude DAGGER..BULLET
+            if '2020' == start:
+                continue
+            # Exclude ONE DOT LEADER, HYPHENATION POINT
+            if '2024' == start:
+                ret.append(((int('2025', 16), int('2026', 16)), comment))
+                continue
             # Exclude BOX DRAWINGS LIGHT HORIZONTAL..BOX DRAWINGS HEAVY VERTICAL AND HORIZONTAL
             if '2500' == start:
                 continue
