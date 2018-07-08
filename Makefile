@@ -15,7 +15,7 @@ EmojiSources.txt:
 UTF-8: UnicodeData.txt EastAsianWidth.txt
 	./utf8_gen.py $^
 
-UTF-8-EAW-FULLWIDTH: UTF-8 EastAsianWidth.txt
+UTF-8-EAW-FULLWIDTH: UTF-8 EastAsianWidth.txt gen.py
 	./gen.py
 
 UTF-8-EAW-FULLWIDTH.gz: UTF-8-EAW-FULLWIDTH
